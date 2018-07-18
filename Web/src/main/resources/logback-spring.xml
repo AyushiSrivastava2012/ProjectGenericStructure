@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<property name="LogSize" value="3GB" />
+	<property name="LOG_FILE_PATH" value="/data/csm/logs/" />
+	<property name="APP_NAME" value="CSM" />
+	<property name="kafkafallbackfileNamePattern"
+		value="${LOG_FILE_PATH}kafkafallback/kafkafallback_%d{ddMMyyyy}.log.gz" />
+	<property name="kafkaEventsFallbackfilePattern"
+		value="${LOG_FILE_PATH}kafkaEventsFallback/kafkaEventsFallback_%d{ddMMyyyy}.log.gz" />
+	<property name="kafkafallbackFile"
+		value="${LOG_FILE_PATH}kafkafallback/kafkafallback.log" />
+	<property name="kafkaEventsFallbackFile"
+		value="${LOG_FILE_PATH}kafkaEventsFallback/kafkaEventsFallback.log" />
+	<property name="pattern" value="%d [%t] %-5p: ${APP_NAME} %c - %m%n" />
+	<property name="kafkaPattern" value="${APP_NAME}#%d|[%t]|%-5p|${APP_NAME}|%c|%m%n" />
+	<property name="topic" value="testTrial2" />
+	<property name="bootstrapServers" value="10.5.200.246:32494,10.5.200.246:30566" />
+
+	console appender
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>${pattern}</pattern>
+		</encoder>
+	</appender>
+
+	file appender
+
+	<appender name="fileLog"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${LOG_FILE_PATH}csm.log</File>
+
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_FILE_PATH}csm_%d{ddMMyyyy_HH}_%i.log
+			</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>${LogSize}</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<charset>UTF-8</charset>
+			<pattern>${pattern}</pattern>
+			<immediateFlush>true</immediateFlush>
+		</encoder>
+	</appender>
+
+
+	<!-- kafka start -->
+	<!-- <appender name="kafkaLogsFallback"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${LOG_FILE_PATH}kafkafallback/kafkafallback.log
+		</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${kafkafallbackfileNamePattern}</fileNamePattern>
+		</rollingPolicy>
+		<encoder>
+			<charset>UTF-8</charset>
+			<pattern>${kafkaPattern}</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="kafkaLogsAppender"
+		class="com.airtel.logback.kafka.delivery.LogsKafkaAppender">
+		<encoder
+			class="com.github.danielwegener.logback.kafka.encoding.LayoutKafkaMessageEncoder">
+			<layout class="ch.qos.logback.classic.PatternLayout">
+				<pattern>${kafkaPattern}</pattern>
+			</layout>
+		</encoder>
+		<topic>${topic}</topic>
+		<producerConfig>bootstrap.servers=${bootstrapServers}
+		</producerConfig>
+		<producerConfig>max.block.ms=5000</producerConfig>
+		<producerConfig>client.id=${HOSTNAME}-${APP_NAME}-logger
+		</producerConfig>
+		<producerConfig>compression.type=snappy</producerConfig>
+		<appender-ref ref="kafkaLogsFallback" />
+	</appender>
+
+	<appender name="asyncKafkaLogAppender" class="ch.qos.logback.classic.AsyncAppender">
+		<queueSize>1000</queueSize>
+		<discardingThreshold>0</discardingThreshold>
+		<appender-ref ref="kafkaLogsAppender" />
+	</appender>
+
+
+	<appender name="eventsKafkaFallback"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${kafkaEventsFallbackFile}</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${kafkaEventsFallbackfilePattern}</fileNamePattern>
+		</rollingPolicy>
+		<encoder>
+			<charset>UTF-8</charset>
+			<pattern>
+				${kafkaPattern}
+			</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="eventsAppender"
+		class="com.airtel.logback.kafka.delivery.EventsKafkaAppender">
+		<topic>${topic}</topic>
+		<producerConfig>bootstrap.servers=${bootstrapServers}
+		</producerConfig>
+		<producerConfig>max.block.ms=5000</producerConfig>
+		<producerConfig>client.id=${HOSTNAME}-${APP_NAME}-event-logger
+		</producerConfig>
+		<producerConfig>compression.type=snappy</producerConfig>
+		<appender-ref ref="eventsKafkaFallback" />
+	</appender>
+
+	<appender name="asyncEventsKafkaAppender" class="ch.qos.logback.classic.AsyncAppender">
+		<appender-ref ref="eventsAppender" />
+	</appender> -->
+
+
+	<!-- kafka appender end -->
+
+	<logger name="com.airtel.logback.kafka.delivery.logger.EventPublisher"
+		level="DEBUG" additivity="false">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="fileLog" />
+		<!-- <appender-ref ref="asyncEventsKafkaAppender" /> -->
+	</logger>
+
+	<logger name="org.hibernate" level="DEBUG" />
+	<logger name="org.springframework" level="ERROR" />
+
+	<root level="info">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="fileLog" />
+		<!-- <appender-ref ref="asyncKafkaLogAppender"></appender-ref> -->
+	</root>
+
+</configuration>
+
