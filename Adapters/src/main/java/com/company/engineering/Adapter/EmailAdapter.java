@@ -1,4 +1,4 @@
-package com.company.engineering.CSMAdapter;
+package com.company.engineering.Adapter;
 
 /**
  * @author:B0096708

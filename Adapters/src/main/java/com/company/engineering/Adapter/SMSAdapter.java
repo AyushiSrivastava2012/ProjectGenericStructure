@@ -1,4 +1,4 @@
-package com.company.engineering.CSMAdapter;
+package com.company.engineering.Adapter;
 
 import java.util.HashMap;
 import java.util.Map;

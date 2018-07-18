@@ -13,7 +13,7 @@ import org.springframework.web.WebApplicationInitializer;
 
 @SpringBootApplication
 @PropertySource("file:/data/csm/config.properties")
-@ComponentScan(basePackages = "com.airtel.product.engg")
+@ComponentScan(basePackages = "com.company.engineering")
 public class WebApplication extends SpringBootServletInitializer implements WebApplicationInitializer{
 
 	

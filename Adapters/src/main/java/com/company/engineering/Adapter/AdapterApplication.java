@@ -1,4 +1,4 @@
-package com.company.engineering.CSMAdapter;
+package com.company.engineering.Adapter;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package com.company.engineering.CSMAdapter;
+package com.company.engineering.Adapter;
 
 import org.apache.http.HttpHost;
 import org.apache.http.auth.AuthScope;
