@@ -1,2 +1,4 @@
 com/company/engineering/Vo/constants/Constants.class
-com/company/engineering/Vo/mongoVos/UserCollection.class
+com/company/engineering/Vo/mongo/BaseEntity.class
+com/company/engineering/Vo/mongo/User.class
+com/company/engineering/Vo/mongo/UserLogin.class

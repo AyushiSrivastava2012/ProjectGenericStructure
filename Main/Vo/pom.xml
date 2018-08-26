@@ -10,10 +10,10 @@
 	<name>Vo</name>
 	<description>Vo</description>
 
-	<properties>
-		<start-class>com.company.engineering.Main.MainApplication</start-class>
+	<!-- <properties>
+		<start-class>com.company.engineering.Web.WebApplication</start-class>
 	</properties>
-
+ -->
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.data</groupId>
@@ -21,4 +21,36 @@
 			<version>2.0.8.RELEASE</version>
 		</dependency>
 	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>**/*IntegrationTest.java</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>integration-tests</id>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+						<configuration>
+							<includes>
+								<include>**/*IntegrationTest.java</include>
+							</includes>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	
 </project>

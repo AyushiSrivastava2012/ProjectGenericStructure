@@ -4,13 +4,16 @@
 package com.company.engineering.Repositories.mongo;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
 
-import com.company.engineering.Vo.mongoVos.UserCollection;
+import com.company.engineering.Vo.mongo.User;
 
 /**
  * @author Ayushi
  *
- */
-public interface UserRepository extends MongoRepository<UserCollection, String> {	
+ */ 
+
+@Repository
+public interface UserRepository extends MongoRepository<User, String> {	
 	
 }

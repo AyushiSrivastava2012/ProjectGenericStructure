@@ -9,9 +9,9 @@
 	<artifactId>Adapter</artifactId>
 	<name>Adapter</name>
 	<description>Adapter</description>
-	<properties>
-		<start-class>com.company.engineering.Main.MainApplication</start-class>
-	</properties>
+	<!-- <properties>
+		<start-class>com.company.engineering.Web.WebApplication</start-class>
+	</properties> -->
 
 
 	<dependencies>

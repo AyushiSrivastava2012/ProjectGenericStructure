@@ -12,10 +12,10 @@
 	<description>web</description>
 
 
-	<properties>
+	<!-- <properties>
 		<start-class>com.company.engineering.Main.MainApplication</start-class>
 	</properties>
-
+ -->
 
 	<dependencies>
 		<dependency>

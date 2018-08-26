@@ -1,13 +1,13 @@
-package com.airtel.product.engg.CSMMain;
-
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
-
-public class ServletInitializer extends SpringBootServletInitializer {
-
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(CsmMainApplication.class);
-	}
-
-}
+//package com.airtel.product.engg.CSMMain;
+//
+//import org.springframework.boot.builder.SpringApplicationBuilder;
+//import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+//
+//public class ServletInitializer extends SpringBootServletInitializer {
+//
+//	@Override
+//	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+//		return application.sources(CsmMainApplication.class);
+//	}
+//
+//}

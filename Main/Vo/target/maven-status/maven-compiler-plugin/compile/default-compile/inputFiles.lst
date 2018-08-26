@@ -1,2 +1,4 @@
-/Users/B0096708/CSM/ProjectGenericStructure/Main/Vo/src/main/java/com/company/engineering/Vo/mongoVos/UserCollection.java
+/Users/B0096708/CSM/ProjectGenericStructure/Main/Vo/src/main/java/com/company/engineering/Vo/mongo/UserLogin.java
+/Users/B0096708/CSM/ProjectGenericStructure/Main/Vo/src/main/java/com/company/engineering/Vo/mongo/User.java
 /Users/B0096708/CSM/ProjectGenericStructure/Main/Vo/src/main/java/com/company/engineering/Vo/constants/Constants.java
+/Users/B0096708/CSM/ProjectGenericStructure/Main/Vo/src/main/java/com/company/engineering/Vo/mongo/BaseEntity.java
